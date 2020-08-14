@@ -39,15 +39,6 @@ function liane_cpt_to_pll( $post_types, $is_settings ) {
 }
 
 /*
- * Polylang filters
- */
-add_filter( 'pll_filter_home_url', 'liane_pll_filter_home_url' );
-
-function liane_pll_filter_home_url() {
-  return false;
-}
-
-/*
  * Flatbase livesearch filters
  */
 add_filter( 'nice_livesearch_label', 'liane_livesearch_label', 100 );
@@ -56,13 +47,16 @@ function liane_livesearch_label() {
   return __( 'Have a question? Ask or enter a search term.', 'liane-support' );
 }
 
+/*
+ * Flatbase custom livesearch
+ */
 function nice_livesearch_js() {
   // being here we can set admin-ajax.php for WP multisite
   ?>
   <script type="text/javascript">
   //<![CDATA[
     jQuery(document).ready(function() {
-      jQuery('#live-search #s').liveSearch({url: '<?php echo home_url(); ?>/?ajax=true&livesearch=true&lang=<?php pll_current_language(); ?>&s='});
+      jQuery('#live-search #s').liveSearch({url: '/?ajax=true&livesearch=true&lang=<?php pll_current_language(); ?>&s='});
     });
   //]]>
   </script>
