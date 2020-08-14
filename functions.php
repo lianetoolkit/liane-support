@@ -50,7 +50,7 @@ function liane_pll_filter_home_url() {
 /*
  * Flatbase livesearch filters
  */
-add_filter( 'nice_livesearch_label', 'liane_livesearch_label' );
+add_filter( 'nice_livesearch_label', 'liane_livesearch_label', 100 );
 
 function liane_livesearch_label() {
   return __( 'Have a question? Ask or enter a search term.', 'liane-support' );
