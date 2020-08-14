@@ -62,7 +62,7 @@ function nice_livesearch_js() {
   <script type="text/javascript">
   //<![CDATA[
     jQuery(document).ready(function() {
-      jQuery('#live-search #s').liveSearch({url: '<?php echo home_url(); ?>/?ajax=true&livesearch=true&s='});
+      jQuery('#live-search #s').liveSearch({url: '<?php echo home_url(); ?>/?ajax=true&livesearch=true&lang=' . pll_current_language() . '&s='});
     });
   //]]>
   </script>
@@ -75,7 +75,7 @@ function liane_ajax_pll($query) {
   if ( ! is_admin() && $query->is_main_query() ) {
 		if ( $query->is_search ) {
 			if ( get_query_var('ajax') == true ) {
-        $query->set( 'lang', pll_current_language() );
+        // $query->set( 'lang', pll_current_language() );
 			}
 		}
 	}
