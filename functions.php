@@ -62,3 +62,18 @@ function nice_livesearch_js() {
   </script>
   <?php
 }
+
+/*
+ * Add lang to ajax requests
+ */
+add_action( 'pre_get_posts', 'liane_ajax_pll', 20 );
+
+function liane_ajax_pll($query) {
+  if ( ! is_admin() && $query->is_main_query() ) {
+		if ( $query->is_search ) {
+			if ( get_query_var('ajax') == true ) {
+        $query->set( 'lang', $_GET['lang'] );
+			}
+		}
+	}
+}
