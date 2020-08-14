@@ -68,15 +68,3 @@ function nice_livesearch_js() {
   </script>
   <?php
 }
-
-add_action( 'pre_get_posts', 'liane_ajax_pll' );
-
-function liane_ajax_pll($query) {
-  if ( ! is_admin() && $query->is_main_query() ) {
-		if ( $query->is_search ) {
-			if ( get_query_var('ajax') == true ) {
-        // $query->set( 'lang', pll_current_language() );
-			}
-		}
-	}
-}
