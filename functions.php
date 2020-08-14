@@ -1,5 +1,8 @@
 <?php
 
+/*
+ * Scripts and styles
+ */
 add_action( 'wp_enqueue_scripts', 'liane_theme_enqueue_styles' );
 
 function liane_theme_enqueue_styles() {
@@ -15,6 +18,9 @@ function liane_theme_enqueue_styles() {
     );
 }
 
+/*
+ * Polylang post types
+ */
 add_filter( 'pll_get_post_types', 'liane_cpt_to_pll', 10, 2 );
 
 function liane_cpt_to_pll( $post_types, $is_settings ) {
@@ -30,4 +36,24 @@ function liane_cpt_to_pll( $post_types, $is_settings ) {
         $post_types['faq'] = 'faq';
     }
     return $post_types;
+}
+
+/*
+ * Polylang filters
+ */
+
+add_filter( 'pll_filter_home_url', 'liane_pll_filter_home_url' );
+
+function liane_pll_filter_home_url() {
+  return false;
+}
+
+/*
+ * Flatbase livesearch filters
+ */
+
+add_filter( 'nice_livesearch_label', 'liane_livesearch_label' );
+
+function liane_livesearch_label() {
+  return __( 'Have a question? Ask or enter a search term.', 'liane-support' );
 }
