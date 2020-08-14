@@ -86,3 +86,18 @@ function liane_ajax_pll($query) {
 		}
 	}
 }
+
+/*
+ * Nice post meta
+ */
+ add_filter( 'nice_post_meta', 'liane_nice_post_meta', 20 );
+
+ function liane_nice_post_meta() {
+   ob_start();
+   ?>
+   <p class="post-meta">
+     <?php edit_post_link( __( 'Edit', 'nicethemes' ), '<span class="small"><i class="fa fa-pencil"></i>', '</span>' ); ?>
+   </p>
+   <?php
+   return ob_get_clean();
+ }
