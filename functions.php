@@ -19,6 +19,15 @@ function liane_theme_enqueue_styles() {
 }
 
 /*
+ * Text domain
+ */
+add_action( 'after_setup_theme', 'liane_setup_theme' );
+
+function liane_setup_theme() {
+  load_child_theme_textdomain('liane-support', get_stylesheet_directory() . '/languages');
+}
+
+/*
  * Polylang post types
  */
 add_filter( 'pll_get_post_types', 'liane_cpt_to_pll', 10, 2 );
