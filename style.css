@@ -13,6 +13,6 @@ License URI: http://www.gnu.org/licenses/gpl-3.0.html
   text-transform: none;
 }
 
-.site-footer.dark {
+#footer.site-footer.dark {
   background: #330066 !important;
 }
